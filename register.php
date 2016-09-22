@@ -18,7 +18,7 @@ function connect_db() {
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
-	echo "Connected successfully";
+	echo "Connected successfully<br><br>";
 	return $conn;
 }
 
@@ -28,7 +28,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 		VALUES ('$full_name', '$username', '$email', '$pass', '$full_address', '$postal_code', '$phone_number')";
 	$result = $conn->query($sql);
 	if ($conn->query($sql) === TRUE) {
-	    echo "New user created successfully";
+	    echo "New user created successfully<br><br>";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}
@@ -42,10 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   	$email = $_POST["email"];
   	$pass = $_POST["pass"];
   	$confirm_pass = $_POST["confirm_pass"];
-  	$full_address = $_POST["full_address"];
+  	$full_address = $_POST["full_adress"];
   	$postal_code = $_POST["postal_code"];
   	$phone_number = $_POST["phone_number"];
   	register($full_name, $username, $email, $pass, $full_address, $postal_code, $phone_number);
 }
-
 ?>
