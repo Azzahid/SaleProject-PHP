@@ -5,14 +5,14 @@
 */
 
 $servername = "localhost";
-$username = "root";
-$password = "heroes2004";
+$db_username = "root";
+$db_password = "";
 $dbname = "db1";
 
 function connect_db() {
-	global $servername, $username, $password, $dbname;
+	global $servername, $db_username, $db_password, $dbname;
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($servername, $db_username, $db_password, $dbname);
 
 	// Check connection
 	if ($conn->connect_error) {
@@ -22,10 +22,10 @@ function connect_db() {
 	return $conn;
 }
 
-function register($full_name, $username, $email, $pass, $confirm_pass, $full_address, $postal_code, $phone_number) {
+function register($full_name, $username, $email, $pass,$full_address, $postal_code, $phone_number) {
 	$conn = connect_db();
-	$sql = "INSERT INTO users (full_name, username, email, pass, confirm_pass, full_address, postal_code, phone_number
-		VALUES ('$full_name', '$username', '$email', '$pass', '$confirm_pass', '$full_address', '$postal_code', '$phone_number')";
+	$sql = "INSERT INTO user (fullname, username, email, password, address, postalcode, phonenumber)
+		VALUES ('$full_name', '$username', '$email', '$pass', '$full_address', '$postal_code', '$phone_number')";
 	$result = $conn->query($sql);
 	if ($conn->query($sql) === TRUE) {
 	    echo "New user created successfully";
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   	$full_address = $_POST["full_address"];
   	$postal_code = $_POST["postal_code"];
   	$phone_number = $_POST["phone_number"];
-  	register($full_name, $username, $email, $pass, $confirm_pass, $full_address, $postal_code, $phone_number);
+  	register($full_name, $username, $email, $pass, $full_address, $postal_code, $phone_number);
 }
 
 ?>
