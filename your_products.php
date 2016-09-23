@@ -27,7 +27,7 @@
 				<strong>Sunday, 14 September 2016</strong><br />
 				at 20.00
 				<hr />
-				<img src="http://placekitten.com/100/100">
+				<img src="http://placekitten.com/100/100" alt="product-image">
 				<div class="description">
 					<p><strong>Phelps Air Styler</strong><br />
 					<span class="price">IDR 500.000</span><br />
@@ -37,8 +37,8 @@
 				<div class="side-description">
 					<p >96 likes<br />
 					2 purchases</p>
-					<a href="" class="edit">EDIT</a>
-					<a href="" class="delete">DELETE</a>
+					<span class="edit" onclick="edit_item();">EDIT</span>
+					<span class="delete" onclick="delete_item()">DELETE</a>
 				</div>			
 				<hr class="full" />
 			</div>	
@@ -47,7 +47,7 @@
 				<strong>Sunday, 14 September 2016</strong><br />
 				at 20.00
 				<hr />
-				<img src="http://placekitten.com/100/100">
+				<img src="http://placekitten.com/100/100" alt="product-image">
 				<div class="description">
 					<p><strong>Phelps Air Styler</strong><br />
 					<span class="price">IDR 500.000</span><br />
@@ -57,11 +57,13 @@
 				<div class="side-description">
 					<p >96 likes<br />
 					2 purchases</p>
-					<a href="" class="edit">EDIT</a>
-					<a href="" class="delete">DELETE</a>
+					<span class="edit" onclick="edit_item()">EDIT</span>
+					<span class="delete" onclick="delete_item()">DELETE</a>	
 				</div>			
 				<hr class="full" />
 			</div>
 		</div>				
 	</body>
+
+	<script type="text/javascript" src="js/your_products.js"></script>
 </html>
