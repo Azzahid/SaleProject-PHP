@@ -2,7 +2,7 @@ function getConfirmation(){
    var retVal = confirm("Are you sure with your input?");
    if( retVal == true ){
       document.getElementById("purchase_form").submit();
-      window.location.assign("http://localhost/purchases.php")
+      window.location.assign("http://localhost/purchases.php");
       // return true;
    }
    else{
