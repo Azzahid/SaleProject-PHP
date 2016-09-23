@@ -18,7 +18,7 @@
 					<li><a href=""><span>Purchases</span></a></li>
 				</ul>
 			</div>
-			<h3>What are you going to sell today?</h3>
+			<h3>Please confirm your purchase</h3>
 			<hr />
 
 			<form method="post" action="" id="purchase_form">
@@ -32,33 +32,32 @@
 				<p>Delivery to :</p>
 				<div>
 					<label for="consignee">Consignee</label><br />
-					<input type="text" name="consignee">
+					<input type="text" name="consignee" id="consignee">
 				</div>
 				<div>
-					<label for="full_address">Full Adress</label><br />
-					<textarea name="full_adress" rows="5" cols="50">
-					</textarea>
+					<label for="full_address">Full Address</label><br />
+					<textarea name="full_address" rows="5" cols="50" id="full_address"></textarea>
 				</div>
 				<div>
 					<label for="postal_code">Postal Code</label><br />
-					<input type="text" name="postal_code">
+					<input type="text" name="postal_code" id="postal_code">
 				</div>
 				<div>
 					<label for="phone_number">Phone Number</label><br />
-					<input type="text" name="phone_number">
+					<input type="text" name="phone_number" id="phone_number">
 				</div>
 				<div>
 					<label for="credit_card">12 Digits Credit Card Number</label><br />
-					<input type="text" name="credit_card">
+					<input type="text" name="credit_card" id="credit_card">
 				</div>
 				<div>
 					<label for="card_verification">3 Digits Card Verification Value</label><br />
-					<input type="text" name="card_verification">
+					<input type="text" name="card_verification" id="card_verification">
 				</div>
 				<div>
 					<input type="button" value="Confirm" onclick="getConfirmation();">
 				</div>
-				<p><a href="">Cancel</a></p>
+				<p><a href="catalog.html">Cancel</a></p>
 			</form>
 		</div>
 	</body>
