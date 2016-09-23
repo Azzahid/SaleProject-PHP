@@ -27,7 +27,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 	$sql = "INSERT INTO user (fullname, username, email, password, address, postalcode, phonenumber)
 		VALUES ('$full_name', '$username', '$email', '$pass', '$full_address', '$postal_code', '$phone_number')";
 	$result = $conn->query($sql);
-	if ($conn->query($sql) === TRUE) {
+	if ($result) {
 	    echo "New user created successfully<br><br>";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
