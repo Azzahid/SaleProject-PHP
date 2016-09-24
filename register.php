@@ -37,7 +37,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 		$count_email = mysqli_num_rows($result_email);
 		if($count_email != 0){
 			$error = true;
-			$emailError = "Provided Email is already in use.";
+			$emailError = "* Provided Email is already in use.";
 		}
 	}
 	
@@ -50,7 +50,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 		$count_uname = mysqli_num_rows($result_uname);
 		if($count_uname != 0){
 			$error = true;
-			$unameError = "Provided Username already exist.";
+			$unameError = "* Provided Username already exist.";
 		}
 	}
 	
@@ -96,12 +96,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div>
 				<label for="username">Username</label><br />
 				<input type="text" name="username">
-				<span class="error">* <?php echo $unameError;?></span>
+				<span class="error"> <?php echo $unameError;?></span>
 			</div>
 			<div>
 				<label for="email">Email</label><br />
 				<input type="text" name="email">
-				<span class="error">* <?php echo $emailError;?></span>
+				<span class="error"> <?php echo $emailError;?></span>
 			</div>
 			<div>
 				<label for="pass">Password</label><br />
