@@ -2,55 +2,31 @@
 <html>
 	<head>
 		<title>Catalog</title>
-		<style>
-			#head{
-				text-align: center;
-				margin: 20px;
-			}
-			
-			#blue{
-				color: blue;
-			}
-			#right{
-				text-align: right;
-			}
-			#f_left{
-				float: left;
-				border: solid;
-				margin: 0px;
-				padding-top: 10px;
-				padding-bottom: 10px;
-				padding-right: 20px;
-				padding-left: 20px;
-			}
-			#out{
-				text-align:right;
-				size: 50%;
-				color: red;
-				clear: right;
-			}
-			#clrh{
-				clear:left; 
-				margin: 40px;
-				border-bottom: solid 1px;
-			}
-		</style>
+		<link rel="stylesheet" type ="text/css" href=catalog.css>
 	</head>
 	<body>
-		<h1 id="head">Sale<span id="blue">Project</span></h1>
-		<div id="right">Hi, chirastore!</div>
-		<div id="out">logout</div>
-		<ul style="list-style-type: none; margin-top: 20px; margin-bottom: 20px;">
-			<li id="f_left">Catalog</li>
-			<li id="f_left">Your Product</li>
-			<li id="f_left">Add Product</li>
-			<li id="f_left">Sales</li>
-			<li id="f_left">Purchases</li>
-		</ul>
-		<br>
-		<h3 id="clrh">What are you going to buy today ?</h3>
-		<!-- hi -->
-		
+		<div id="page">
+			<h1 id="head">Sale<span id="blue">Project</span></h1>
+			<div id="right">Hi, chirastore!</div>
+			<div style="position : relative;">
+				<button class="out">logout</button>
+			</div>
+			<div style="padding-top:20px; padding-bottom:20px;">
+				<button class="choose" id="bluebox";>Catalog</button>
+				<button class="choose">Your Product</button>
+				<button class="choose">Add Product</button>
+				<button class="choose">Sales</button>
+				<button class="choose">Purchases</button>
+			</div>
+			<div>
+				<h3 id="clrh">What are you going to buy today ?</h3>
+			</div>
+			<div>
+				<form>
+					
+				</form>
+			</div>
+		</div>
 		
 	</body>
 </html>
