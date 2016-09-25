@@ -1,66 +1,4 @@
-<?php
-$servername = "localhost";
-$db_username ="root";
-$db_password = "bismillah";
-$dbname = "db1";
 
-function connect_db(){
-	global $servername, $db_username, $db_password, $dbname;
-	// Create connection
-	$conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
-
-	// Check connection
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-	return $conn;
-}
-
-function getProduct($search, $option){
-	$conn = connect_db();
-	$query = "SELECT fullname, prod_id, prod_name, prod_price, prod_like, prod_purc,
-	prod_expl, user_id, prod_date, prod_img FROM products, user WHERE products.user_id=user.id";
-	$result = $conn->query($query);
-	
-	if($result->num_rows >0){
-		//output
-		while($row = $result->fetch_assoc()){
-			$date = strtotime($row.["prod_date"]);
-			echo '<div>
-				<div>
-					<div>'.$row["fullname"].'</div>
-					<div>added this on'.date_format('l, j F Y, ').'at'.
-					date_format('H:i').'</div>
-				</div>
-				<div>
-					<img src="'.$row["prod_img"].'" alt="product.jpg" id="pic">
-					<div>'.$row["prod_name"].'</div>
-					<div>'.$row["prod_price"].'</div>
-					<div>'.$row["prod_expl"].'</div>
-				</div>
-				<div>
-					<div>
-						<div>'.$row["prod_like"].'</div>
-						<div>'.$row["prod_purc"].'</div>
-					</div>
-					<div>
-							<button>Like</button>
-							<button>Buy</button>
-					</div>
-				</div>
-				</div>'
-		}
-	}
-	mysqli_close($conn);
-}
-
-if($_SERVER["REQUEST_METHOD"] == "GET"){
-	$search = $_GET["search"];
-	$option = $_GET["option"];
-	getProduct($search, $option);
-}
-
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -103,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 			<div style="padding-top: 20px; padding-bottom:20px;">
 				<div>
 					<div style="font-weight: bold;">"$store_name"</div>
-					<div name="tanggal">adden this on"$tanggal"</div>
+					<div name="tanggal">added this on"$tanggal"</div>
 				</div>
 				<div style ="padding:10px; border-top: 1px black solid; border-bottom: 1px black solid; overflow:hidden;">
 					<img src="/home/zahid/Downloads/catalog.jpg" alt="product.jpg" style="width:100px; height:100px;float:left">
@@ -124,6 +62,70 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 					</div>
 				</div>
 			</div>
+	
+
+<?php
+$servername = "localhost";
+$db_username ="root";
+$db_password = "bismillah";
+$dbname = "db1";
+
+function connect_db(){
+	global $servername, $db_username, $db_password, $dbname;
+	// Create connection
+	$conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
+
+	// Check connection
+	if (!$conn) {
+	    die("Connection failed: " . mysqli_connect_error());
+	}
+	return $conn;
+}
+
+function getProduct($search, $option){
+	$conn = connect_db();
+	$query = "SELECT fullname, prod_id, prod_name, prod_price, prod_like, prod_purc,
+	prod_expl, user_id, prod_date, prod_img FROM products, user WHERE products.user_id=user.id";
+	$result = $conn->query($query);
+	
+	if($result->num_rows >0){
+		//output
+		while($row = $result->fetch_assoc()){
+			$date = strtotime($row.["prod_date"]);
+			echo '<div>
+				<div>
+					<div>'.$row["fullname"].'</div>
+					<div>added this on '.date("l, j F Y, ",$date).' at '.
+					date("H:i",$date).'</div>
+				</div>
+				<div>
+					<img src="'.$row["prod_img"].'" alt="product.jpg" id="pic">
+					<div>'.$row["prod_name"].'</div>
+					<div>'.$row["prod_price"].'</div>
+					<div>'.$row["prod_expl"].'</div>
+				</div>
+				<div>
+					<div>
+						<div>'.$row["prod_like"].'</div>
+						<div>'.$row["prod_purc"].'</div>
+					</div>
+					<div>
+							<button>Like</button>
+							<button>Buy</button>
+					</div>
+				</div>
+				</div>';
+		}
+	}
+	mysqli_close($conn);
+}
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+	$search = $_GET["search"];
+	$option = $_GET["option"];
+	getProduct($search, $option);
+}
+
+?>
 		</div>
 	</body>
 </html>
