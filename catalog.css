@@ -11,6 +11,7 @@
 }
 #bluebox{
 	background-color:  #66a4dc; /*blue*/
+	color: white;
 }
 button.choose{
 	background-color: white;
@@ -35,6 +36,24 @@ button.out{
 	position: absolute;
 	right : 0px;
 }
+button.go{
+	border: none;
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+	float: right;
+}
+input.search{
+	width: 650px;
+	height: 35px;
+	font-size: 20px; 
+	background-color: #f5f5f4; 
+	border: none;
+}
+
 #clrh{
 	clear: left;
 	margin-top: 20px;

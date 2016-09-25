@@ -3,6 +3,7 @@
 	<head>
 		<title>Catalog</title>
 		<link rel="stylesheet" type ="text/css" href=catalog.css>
+		<script src="catalog.js"></script>
 	</head>
 	<body>
 		<div id="page">
@@ -12,7 +13,7 @@
 				<button class="out">logout</button>
 			</div>
 			<div style="padding-top:20px; padding-bottom:20px;">
-				<button class="choose" id="bluebox";>Catalog</button>
+				<button class="choose" id="bluebox">Catalog</button>
 				<button class="choose">Your Product</button>
 				<button class="choose">Add Product</button>
 				<button class="choose">Sales</button>
@@ -22,11 +23,13 @@
 				<h3 id="clrh">What are you going to buy today ?</h3>
 			</div>
 			<div>
-				<form>
-					
+				<form action="catalog.php">
+					<input type ="text" class="search" 
+					value="Search Catalog ..." onclick="valKosong()" 
+					name="search" id="search">
+					<button class="go" id="bluebox">GO</button>
 				</form>
 			</div>
 		</div>
-		
 	</body>
 </html>
