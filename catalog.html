@@ -23,12 +23,43 @@
 				<h3 id="clrh">What are you going to buy today ?</h3>
 			</div>
 			<div>
-				<form action="catalog.php">
+				<form action="catalog.php" method="get">
 					<input type ="text" class="search" 
 					value="Search Catalog ..." onclick="valKosong()" 
 					name="search" id="search">
 					<button class="go" id="bluebox">GO</button>
+					<div style="margin-top:10px;">
+						by :
+						<input type ="radio" name = "option" value="product" checked>product
+						<br>
+						<input type ="radio" name = "option" value="store">store
+					</div>
 				</form>
+			</div>
+			<!--BagianProduk rencananya pake PHP di echo satu-satu-->
+			<div style="padding-top: 20px; padding-bottom:20px;">
+				<div>
+					<div style="font-weight: bold;">"$store_name"</div>
+					<div name="tanggal">adden this on"$tanggal"</div>
+				</div>
+				<div style ="padding:10px; border-top: 1px black solid; border-bottom: 1px black solid; overflow:hidden;">
+					<img src="/home/zahid/Downloads/catalog.jpg" alt="product.jpg" style="width:100px; height:100px;float:left">
+					<div style="float:left;">
+						<div>$Nama_Produk</div>
+						<div>$Harga_Produk</div>
+						<div>$details</div>
+					</div>
+					<div style="float:right;">
+						<div>
+							<div>$jumlah likes</div>
+							<div>$jumlah purchases</div>
+						</div>
+						<div>
+							<button style="float:left;">Like</button>
+							<button style="float:right;">Buy</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
