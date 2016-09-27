@@ -1,22 +1,65 @@
+#logout{
+	size: 50%;
+	color: red;
+	border: none;
+	background-color: white;
+	float:right;
+}
+#gobutton{
+	border: none;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+	float: right;
+}
+#searchbar{
+	width: 650px;
+	height: 30px;
+	font-size: 16px; 
+	background-color: #f5f5f4; 
+	border: none;
+}
+#buyquestion{
+	clear: left;
+	margin: 10px 0px 10px 0px;
+	border-bottom: solid 1px;
+	padding :10px 0px 10px 0px;
+}
+#menubar{
+	padding:10px 0px 10px 0px;
+	overflow: hidden;
+}
+#webpage {
+  margin-left:auto;
+  margin-right:auto;
+  width:750px;
+}
 #head{
 	text-align: center;
 	margin: 20px;
 }
-
-#blue{
+.overflow{ /*for div that have float inside of it*/
+	overflow:hidden;
+}
+.blue{
 	color:  #66a4dc; /*blue*/
 }
-#right{
+.right{
 	text-align: right;
 }
-#bluebox{
-	background-color:  #66a4dc; /*blue*/
-	color: white;
+.bluebox{
+	background-color:  #66a4dc !important; /*blue*/
+	color: white; 
 }
-button.choose{
+.margin10{
+	margin : 10px 0px 10px 0px;
+}
+.menubutton{
 	background-color: white;
     border: 1px solid black;
-    color: black;
     width: 150px;
     height: 30px;
     text-align: center;
@@ -24,46 +67,10 @@ button.choose{
     display: inline;
     font-size: 16px;
     float : left;
-    margin-top:20px;
-    margin-bottom:20px;
 }
-button.out{
-	size: 50%;
-	color: red;
-	border: none;
-	background-color: white;
-	clear : right;
-	position: absolute;
-	right : 0px;
+.floatl{
+	float:left;
 }
-button.go{
-	border: none;
-    width: 50px;
-    height: 35px;
-    text-align: center;
-    text-decoration: none;
-    display: inline;
-    font-size: 16px;
-	float: right;
-}
-input.search{
-	width: 650px;
-	height: 35px;
-	font-size: 20px; 
-	background-color: #f5f5f4; 
-	border: none;
-}
-
-#clrh{
-	clear: left;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	border-bottom: solid 1px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-#page {
-  margin-left:auto;
-  margin-right:auto;
-  width:750px;
+button:hover{
+	color:black;
 }

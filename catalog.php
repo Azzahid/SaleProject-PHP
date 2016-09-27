@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,36 +6,43 @@
 		<script src="catalog.js"></script>
 	</head>
 	<body>
-		<div id="page">
-			<h1 id="head">Sale<span id="blue">Project</span></h1>
-			<div id="right">Hi, chirastore!</div>
-			<div style="position : relative;">
-				<button class="out">logout</button>
+		<div id="webpage">
+			<h1 id="head">Sale<span class="blue">Project</span></h1>
+			<div class="right">Hi, chirastore!</div>
+			<!-- logout -->
+			<div class="overflow">
+				<button id="logout" onclick="logout()">logout</button> 
 			</div>
-			<div style="padding-top:20px; padding-bottom:20px;">
-				<button class="choose" id="bluebox">Catalog</button>
-				<button class="choose">Your Product</button>
-				<button class="choose">Add Product</button>
-				<button class="choose">Sales</button>
-				<button class="choose">Purchases</button>
+			<!-- menu bar -->
+			<div id="menubar">
+				<button class="menubutton bluebox">Catalog</button>
+				<button class="menubutton">Your Product</button>
+				<button class="menubutton">Add Product</button>
+				<button class="menubutton">Sales</button>
+				<button class="menubutton">Purchases</button>
 			</div>
+			<!-- bar question -->
 			<div>
-				<h3 id="clrh">What are you going to buy today ?</h3>
+				<h3 id="buyquestion">What are you going to buy today ?</h3>
 			</div>
-			<div>
-				<form action="catalog.php" method="get">
-					<input type ="text" class="search" 
-					value="Search Catalog ..." onclick="valKosong()" 
-					name="search" id="search">
-					<button class="go" id="bluebox">GO</button>
-					<div style="margin-top:10px;">
-						by :
-						<input type ="radio" name = "option" value="product" checked>product
+			<!-- search form -->
+			<form action="catalog.php" method="get">
+				<div class="overflow margin10">
+					<input type ="text" id="searchbar" name="search" 
+					placeholder="Search catalog ...">
+					<button id="gobutton" class="bluebox">GO</button>
+				</div>
+				<div class="overflow">
+					<div class="floatl">by :</div>
+					<div class="floatl">
+						<input type ="radio" name = "option" value=0 checked>
+						<label for="option"><span><span></span></span>product</label>
 						<br>
-						<input type ="radio" name = "option" value="store">store
+						<input type ="radio" name = "option" value=1>
+						<label for="option"><span><span></span></span>store</label>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 			<!--BagianProduk rencananya pake PHP di echo satu-satu-->
 			<div style="padding-top: 20px; padding-bottom:20px;">
 				<div>
