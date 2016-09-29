@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2016 at 12:13 PM
+-- Generation Time: Sep 29, 2016 at 01:02 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.15
 
@@ -35,6 +35,13 @@ CREATE TABLE `product` (
   `created_at` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`p_id`, `namaProduk`, `description`, `price`, `photo_url`, `created_at`, `user_id`) VALUES
+(1, 'handuk', 'handuk bersih dan kuat', '25000', '', '2016', 7);
 
 -- --------------------------------------------------------
 
@@ -115,9 +122,9 @@ ALTER TABLE `product`
 --
 ALTER TABLE `purchase`
   ADD PRIMARY KEY (`purchase_id`),
-  ADD UNIQUE KEY `purchase_pid` (`product_id`),
-  ADD UNIQUE KEY `idx_sellerid` (`seller_id`),
-  ADD KEY `idx_buyerid` (`buyer_id`);
+  ADD KEY `idx_buyerid` (`buyer_id`),
+  ADD KEY `purchase_pid` (`product_id`) USING BTREE,
+  ADD KEY `idx_sellerid` (`seller_id`) USING BTREE;
 
 --
 -- Indexes for table `user`
@@ -141,12 +148,12 @@ ALTER TABLE `user_like`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --

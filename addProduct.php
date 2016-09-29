@@ -24,50 +24,17 @@
 				<button class="menubutton">Sales</button>
 				<button class="menubutton">Purchases</button>
 			</div>
-			<!-- bar question -->
-			<div>
-				<h3 id="buyquestion">What are you going to buy today ?</h3>
-			</div>
-			<!-- search form -->
-			<form action="catalog.php" method="get">
-				<div class="overflow margin10">
-					<input type ="text" id="searchbar" name="search" 
-					placeholder="Search catalog ...">
-					<button id="gobutton" class="bluebox">GO</button>
-				</div>
-				<div class="overflow">
-					<div class="floatl">by :</div>
-					<div class="floatl">
-						<input type ="radio" name = "option" value=0 checked>
-						<label for="option"><span><span></span></span>product</label>
-						<br>
-						<input type ="radio" name = "option" value=1>
-						<label for="option"><span><span></span></span>store</label>
-					</div>
-				</div>
+
+			<h2>Please add your product here</h2>
+			<br>
+			<form method="post" action="addProduct.php">
+				Name<br><input type="text" name="productName" /><br>
+				Description (max 200 chars)<br><textarea name="productDescription" rows="4" cols="50"></textarea><br>
+				Price (IDR)<br><input type="text" name="productPrice" /><br>
+				Photo<br><input type="file" name="productPicture"/><br><br>
+				<input type="submit" value="ADD" name="addsubmit"/>
+				<input type="submit" value="CANCEL" name="cancelsubmit"/>
 			</form>
-			<!--BagianProduk rencananya pake PHP di echo satu-satu-->
-			<div style="padding-top: 20px; padding-bottom:20px;">
-				<div>
-					<div style="font-weight: bold;">"$store_name"</div>
-					<div name="tanggal">added this on"$tanggal"</div>
-				</div>
-				<div style ="padding:10px; border-top: 1px black solid; border-bottom: 1px black solid; overflow:hidden;">
-					<img src="/home/zahid/Downloads/catalog.jpg" alt="product.jpg" style="width:100px; height:100px;float:left">
-					<div style="float:left;">
-						<div>$Nama_Produk</div>
-						<div>$Harga_Produk</div>
-						<div>$details</div>
-					</div>
-					<div style="float:right;">
-						<div>
-							<div>$jumlah likes</div>
-							<div>$jumlah purchases</div>
-						</div>
-						<div>
-							<button style="float:left;">Like</button>
-							<button style="float:right;">Buy</button>
-						</div>
-					</div>
-				</div>
-			</div>
+		</div>
+	</body>
+</html>
