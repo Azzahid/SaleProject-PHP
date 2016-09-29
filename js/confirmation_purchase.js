@@ -81,7 +81,7 @@ function getConfirmation(){
    var retVal = confirm("Are you sure with your input?");
    if( retVal == true ){
       document.getElementById("purchase_form").submit();
-      window.location.assign("http://localhost/purchases.php");
+      // window.location.assign("http://localhost/purchases.php");
       // return true;
    }
    else{
@@ -92,5 +92,10 @@ function getConfirmation(){
 
 function updateTotalPrice() {
    var quantity = document.getElementById("quantity").value;
-   document.getElementById("total_price").innerHTML = quantity * 100;
+   var price = document.getElementById("product_price").getAttribute("value");
+   document.getElementById("total_price").innerHTML = numberWithCommas(quantity * price);
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
