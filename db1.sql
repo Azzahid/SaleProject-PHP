@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2016 at 09:33 AM
+-- Generation Time: Sep 29, 2016 at 12:13 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.15
 
@@ -114,6 +114,7 @@ ALTER TABLE `product`
 -- Indexes for table `purchase`
 --
 ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`purchase_id`),
   ADD UNIQUE KEY `purchase_pid` (`product_id`),
   ADD UNIQUE KEY `idx_sellerid` (`seller_id`),
   ADD KEY `idx_buyerid` (`buyer_id`);
@@ -141,6 +142,11 @@ ALTER TABLE `user_like`
 --
 ALTER TABLE `product`
   MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `purchase`
+--
+ALTER TABLE `purchase`
+  MODIFY `purchase_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
