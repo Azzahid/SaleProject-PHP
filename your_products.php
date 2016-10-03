@@ -6,6 +6,7 @@
 <html>
 	<head>
 		<title>Your Products</title>
+		<link rel="stylesheet" type="text/css" href="css/your_products.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 	</head>
@@ -28,7 +29,7 @@
 			<div class="side-description">
 				<p >96 likes<br />
 				2 purchases</p>
-				<span class="edit" onclick="edit_item();">EDIT</span>
+				<span class="edit" onclick="edit_item(this.id);" id="1">EDIT</span>
 				<span class="delete" onclick="delete_item()">DELETE</a>
 			</div>			
 			<hr class="full" />
@@ -48,7 +49,7 @@
 			<div class="side-description">
 				<p >96 likes<br />
 				2 purchases</p>
-				<span class="edit" onclick="edit_item()">EDIT</span>
+				<span class="edit" onclick="edit_item(this.id);" id="2">EDIT</span>
 				<span class="delete" onclick="delete_item()">DELETE</a>	
 			</div>			
 			<hr class="full" />

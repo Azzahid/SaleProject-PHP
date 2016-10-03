@@ -1,5 +1,6 @@
-function edit_item() {
-	window.location.assign("http://localhost/edit_product.php")
+function edit_item(id_product) {
+//	var id_product = this.getAttribute("id_product");
+	window.location.assign("edit_product.php?id_product="+id_product)
 }
 
 function delete_item() {
