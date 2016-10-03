@@ -2,67 +2,53 @@
 <html>
 	<head>
 		<title>Your Products</title>
-		<link rel="stylesheet" type="text/css" href="css/your_products.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
 	</head>
-	<body>
-		<div class="row-center">
-			<h1>SaleProject</h1>
-			<p class="right">Hi, chirastore!<br />
-			<a href="#" class="logout">logout</a></p>
-			<div class="center">
-				<ul>
-					<li><a href=""><span>Catalog</span></a></li>
-					<li><a href="" class="active"><span>Your Products</span></a></li>
-					<li><a href=""><span>Add Product</span></a></li>
-					<li><a href=""><span>Sales</span></a></li>
-					<li><a href=""><span>Purchases</span></a></li>
-				</ul>
-			</div>
-			<h3>What are you going to sell today?</h3>
-			<hr />
+	<body class="body-center helvetica">
+		<?php include 'header.php'; ?>
+		<div class = "border-bottom ">
+			<h2>Please register</h2>
 		</div>
-
-		<div class="row-center">
-			<div class="product">
-				<strong>Sunday, 14 September 2016</strong><br />
-				at 20.00
-				<hr />
-				<img src="http://placekitten.com/100/100" alt="product-image">
-				<div class="description">
-					<p><strong>Phelps Air Styler</strong><br />
-					<span class="price">IDR 500.000</span><br />
-					Brush shaped hair dryer. Very convenient plus conditioning with keratin smooth.</p>
-				</div>
-
-				<div class="side-description">
-					<p >96 likes<br />
-					2 purchases</p>
-					<span class="edit" onclick="edit_item();">EDIT</span>
-					<span class="delete" onclick="delete_item()">DELETE</a>
-				</div>			
-				<hr class="full" />
-			</div>	
-
-			<div class="product">
-				<strong>Sunday, 14 September 2016</strong><br />
-				at 20.00
-				<hr />
-				<img src="http://placekitten.com/100/100" alt="product-image">
-				<div class="description">
-					<p><strong>Phelps Air Styler</strong><br />
-					<span class="price">IDR 500.000</span><br />
-					Brush shaped hair dryer. Very convenient plus conditioning with keratin smooth.</p>
-				</div>
-
-				<div class="side-description">
-					<p >96 likes<br />
-					2 purchases</p>
-					<span class="edit" onclick="edit_item()">EDIT</span>
-					<span class="delete" onclick="delete_item()">DELETE</a>	
-				</div>			
-				<hr class="full" />
+		<div class="product">
+			<strong>Sunday, 14 September 2016</strong><br />
+			at 20.00
+			<hr />
+			<img src="http://placekitten.com/100/100" alt="product-image">
+			<div class="description">
+				<p><strong>Phelps Air Styler</strong><br />
+				<span class="price">IDR 500.000</span><br />
+				Brush shaped hair dryer. Very convenient plus conditioning with keratin smooth.</p>
 			</div>
-		</div>				
+
+			<div class="side-description">
+				<p >96 likes<br />
+				2 purchases</p>
+				<span class="edit" onclick="edit_item();">EDIT</span>
+				<span class="delete" onclick="delete_item()">DELETE</a>
+			</div>			
+			<hr class="full" />
+		</div>	
+
+		<div class="product">
+			<strong>Sunday, 14 September 2016</strong><br />
+			at 20.00
+			<hr />
+			<img src="http://placekitten.com/100/100" alt="product-image">
+			<div class="description">
+				<p><strong>Phelps Air Styler</strong><br />
+				<span class="price">IDR 500.000</span><br />
+				Brush shaped hair dryer. Very convenient plus conditioning with keratin smooth.</p>
+			</div>
+
+			<div class="side-description">
+				<p >96 likes<br />
+				2 purchases</p>
+				<span class="edit" onclick="edit_item()">EDIT</span>
+				<span class="delete" onclick="delete_item()">DELETE</a>	
+			</div>			
+			<hr class="full" />
+		</div>			
 	</body>
 
 	<script type="text/javascript" src="js/your_products.js"></script>

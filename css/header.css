@@ -1,0 +1,39 @@
+/*MENU HEADER*/
+ul {
+    list-style-type: none;
+    margin: 40px;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 5px 20px;
+	border-style: solid;
+	border-width: 1px; 
+	text-decoration: none;
+}
+
+li a.active {
+	background-color: #0080ff;
+}
+
+li a.active span {
+	color: white;
+}
+
+li a:hover {
+    background-color: #0080ff;
+    border-style: solid;
+	border-width: 1px; 
+}
+
+li a:hover span {
+	color: white;
+}

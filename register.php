@@ -3,25 +3,7 @@
 /* 
 	Source: http://www.w3schools.com/
 */
-
-$servername = "localhost";
-$db_username = "root";
-$db_password = "";
-$dbname = "db1";
-$error = false;
-$emailError = $unameError = "";
-
-function connect_db() {
-	global $servername, $db_username, $db_password, $dbname;
-	// Create connection
-	$conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
-
-	// Check connection
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
-	return $conn;
-}
+require_once('db.php');
 
 function register($full_name, $username, $email, $pass,$full_address, $postal_code, $phone_number) {
 	$conn = connect_db();
@@ -81,55 +63,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 	<head>
+		<title>Register</title>
+		<link rel="stylesheet" type ="text/css" href="css/style.css">
 	</head>
-	<body>
-		<h1>SaleProject</h1>
-		<h3>Please Register</h3>
+	<body class="body-center helvetica">
+		<div class = "text-align-center arial">
+			<h1><span class="color-red">Sale</span><span class="color-blue">Project</span></h1>
+		</div>
+		<div class = "border-bottom ">
+			<h2>Please register</h2>
+		</div>
 		<form method="POST" action="register.php">
 			<div>
 				<label for="full_name">Full Name</label><br />
-				<input type="text" name="full_name">
+				<input type="text" name="full_name" class="input-text">
 			</div>
 			<div>
 				<label for="username">Username</label><br />
-				<input type="text" name="username">
-				<span class="error"> <?php echo $unameError;?></span>
+				<input type="text" name="username" class="input-text">
 			</div>
 			<div>
 				<label for="email">Email</label><br />
-				<input type="text" name="email">
-				<span class="error"> <?php echo $emailError;?></span>
+				<input type="text" name="email" class="input-text">
 			</div>
 			<div>
 				<label for="pass">Password</label><br />
-				<input type="password" name="pass">
+				<input type="password" name="pass" class="input-text">
 			</div>
 			<div>
 				<label for="confirm_pass">Confirm Password</label><br />
-				<input type="password" name="confirm_pass">
+				<input type="password" name="confirm_pass" class="input-text">
 			</div>
 			<div>
 				<label for="full_address">Full Address</label><br />
-				<textarea name="full_adress" rows="5" cols="50">
+				<textarea name="full_adress" rows="5" cols="50" class="input-textarea">
 				</textarea>
 			</div>
 			<div>
 				<label for="postal_code">Postal Code</label><br />
-				<input type="text" name="postal_code">
+				<input type="text" name="postal_code" class="input-text">
 			</div>
 			<div>
 				<label for="phone_number">Phone Number</label><br />
-				<input type="text" name="phone_number">
+				<input type="text" name="phone_number" class="input-text">
 			</div>
 			<div>
-				<input type="submit" value="Register">
+				<input type="submit" value="REGISTER" name="registerr" class="button float-right">
 			</div>
 		</form>
+		<br>
 		<div>
-			<p>Already registered? Login <a href="login.html">here</a></p>
+			<p class="font-small"><strong>Already registered? Login <a href="login.php" class="link">here</a></strong></p>
 		</div>
+		<?php include 'footer.php'; ?>
 	</body>
 </html>

@@ -70,13 +70,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 	<head>
 		<title>Confirmation Purchase</title>
-		<link rel="stylesheet" type="text/css" href="css/your_products.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
 	</head>
-	<body>
-		<div class="row-center">
+	<body class="body-center helvetica">
+		<div>
 			<?php include 'header.php'; ?>
-			<h3>Please confirm your purchase</h3>
-			<hr />
+			<div class = "border-bottom ">
+				<h2>Please confirm your purchase</h2>
+			</div>
 
 			<form method="post" action="" id="purchase_form">
 				<span id="product_price" value="<?php echo $product_price; ?>"></span>
@@ -97,34 +99,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<p>Delivery to :</p>
 				<div>
 					<label for="consignee">Consignee</label><br />
-					<input type="text" name="consignee" id="consignee" value="<?php echo $consignee ?>">
+					<input type="text" name="consignee" id="consignee" value="<?php echo $consignee ?>" class="input-text">
 				</div>
 				<div>
 					<label for="full_address">Full Address</label><br />
-					<textarea name="full_address" rows="5" cols="50" id="full_address"><?php echo trim($full_address) ?></textarea>
+					<textarea name="full_address" rows="5" cols="50" id="full_address" class="input-textarea	"><?php echo trim($full_address) ?></textarea>
 				</div>
 				<div>
 					<label for="postal_code">Postal Code</label><br />
-					<input type="text" name="postal_code" id="postal_code" value="<?php echo $postal_code ?>">
+					<input type="text" name="postal_code" id="postal_code" value="<?php echo $postal_code ?>" class="input-text">
 				</div>
 				<div>
 					<label for="phone_number">Phone Number</label><br />
-					<input type="text" name="phone_number" id="phone_number" value="<?php echo $phone_number ?>">
+					<input type="text" name="phone_number" id="phone_number" value="<?php echo $phone_number ?>" class="input-text">
 				</div>
 				<div>
 					<label for="credit_card">12 Digits Credit Card Number</label><br />
-					<input type="text" name="credit_card" id="credit_card">
+					<input type="text" name="credit_card" id="credit_card" class="input-text">
 				</div>
 				<div>
 					<label for="card_verification">3 Digits Card Verification Value</label><br />
-					<input type="text" name="card_verification" id="card_verification">
+					<input type="text" name="card_verification" id="card_verification" class="input-text">
 				</div>
 				<div>
-					<input type="button" value="Confirm" onclick="getConfirmation();">
+					<a href="catalog.php" class="cancel-button float-right">CANCEL</a>
+
+					<input type="button" value="CONFIRM" onclick="getConfirmation();" class="button float-right">
 				</div>
-				<p><a href="catalog.html">Cancel</a></p>
 			</form>
 		</div>
+		<?php include 'footer.php'; ?>
 	</body>
 
 	<script type="text/javascript" src="js/confirmation_purchase.js"></script>
