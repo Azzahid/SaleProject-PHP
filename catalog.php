@@ -1,5 +1,6 @@
 <?php
 require_once('db.php');
+$catalog = true;
 
 function getProduct($search, $option){
 	$conn = connect_db();
@@ -10,7 +11,7 @@ function getProduct($search, $option){
 	if($result->num_rows >0){
 		//output
 		while($row = $result->fetch_assoc()){
-			$date = strtotime($row.["prod_date"]);
+			$date = strtotime($row["prod_date"]);
 			echo '<div>
 				<div>
 					<div>'.$row["fullname"].'</div>
@@ -38,7 +39,7 @@ function getProduct($search, $option){
 	}
 	mysqli_close($conn);
 }
-if($_SERVER["REQUEST_METHOD"] == "GET"){
+if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["option"]){
 	$search = $_GET["search"];
 	$option = $_GET["option"];
 	getProduct($search, $option);
@@ -50,6 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 <html>
 	<head>
 		<title>Catalog</title>
+		<link rel="stylesheet" type ="text/css" href="css/catalog.css">
 		<link rel="stylesheet" type ="text/css" href="css/style.css">
 		<link rel="stylesheet" type ="text/css" href="css/header.css">
 		<script src="catalog.js"></script>
@@ -57,8 +59,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 	<body class="body-center helvetica">		
 		<?php include 'header.php'; ?>
 		<!-- bar question -->
-		<div>
-			<h3 id="buyquestion">What are you going to buy today ?</h3>
+		<div class = "border-bottom ">
+			<h2>What are you going to buy today ?</h2>
 		</div>
 		<!-- search form -->
 		<form action="catalog.php" method="get">

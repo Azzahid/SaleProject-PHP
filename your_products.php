@@ -1,3 +1,7 @@
+<?php
+	$your_products = true;
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
