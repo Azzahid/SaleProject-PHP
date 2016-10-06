@@ -1,7 +1,7 @@
 <?php
 	require_once('db.php');
-	ob_start();
-	session_start();
+	//ob_start();
+	//session_start();
 
 	$conn = connect_db();
 	if(!$conn)
@@ -21,13 +21,13 @@
 			$urlresult = mysqli_fetch_array($tempid);
 
 			// Save id_active into session
-			$_SESSION['idactive'] = $urlresult['id'];
+			//$_SESSION['idactive'] = $urlresult['id'];
 			// Save username to the session
-			$_SESSION['ses_username'] = mysqli_real_escape_string($conn, $_POST['username']);
+			//$_SESSION['ses_username'] = mysqli_real_escape_string($conn, $_POST['username']);
 
 			$url = "catalog.php" ;
 			$url_query = parse_url($url, PHP_URL_QUERY);
-			$url .= '?id_active=' .$_SESSION['idactive'];
+			$url .= '?id_active=' .$urlresult['id'];
 			header('Location:' .$url);
 		} else {
 			$login_errmessage = "* Wrong username or password";
