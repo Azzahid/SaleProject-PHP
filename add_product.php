@@ -18,18 +18,17 @@
 		<div class = "border-bottom ">
 			<h2>Please add your product here</h2>
 		</div>
-		
-		<form method="POST" action= "" enctype="multipart/form-data">	
-			Name<br><input type="text" name="productName" /><br>
-			Description (max 200 chars)<br><textarea name="productDescription" rows="4" cols="50"></textarea><br>
-			Price (IDR)<br><input type="text" name="productPrice" /><br>
-			Photo<br><input type="file" name="fileToUpload" /><br><br>
+		<form method="POST" name="addForm" id="addForm" onsubmit="return validateform()" action= "" enctype="multipart/form-data">	
+			Name<br><input type="text" id="productName" name="productName" /><br>
+			Description (max 200 chars)<br><textarea id="productDescription" name="productDescription" rows="4" cols="50"></textarea><br>
+			Price (IDR)<br><input type="text" id="productPrice" name="productPrice"  /><br>
+			Photo<br><input type="file" id="fileToUpload" name="fileToUpload" /><br><br>
 			<a href="catalog.php?id_active=<?php echo $id_active2; ?>" class="cancel-button float-right">CANCEL</a>
 
-			<input type="submit" value="ADD" name="addsubmit" onclick="validationProduct();" class="button float-right" >
+			<input type="submit" value="ADD" name="addsubmit" class="button float-right" >
 		</form>
+		<script src = "js/addProduct.js"></script>
 	</body>
-	<script type="text/javascript" src="js/addProduct.js"></script>
 </html>
 
 <?php
