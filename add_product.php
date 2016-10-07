@@ -39,8 +39,9 @@
 		$price = $_POST['productPrice'];
 		$id_active = $_GET["id_active"];
 		$image = addslashes(file_get_contents($_FILES['fileToUpload']['tmp_name']));
+		$imageProperties = getimageSize($_FILES['fileToUpload']['tmp_name']);
 
-		$query = "INSERT INTO product (namaProduk, description, price, photo_url, user_id) VALUES('$name', '$desc', '$price', '$image', '$id_active')";
+		$query = "INSERT INTO product (namaProduk, description, price, photo_url, created_at, user_id, image_type) VALUES('$name', '$desc', '$price', '{$image}', now(), '$id_active', '{$imageProperties['mime']}')";
 		$result = mysqli_query($con,$query);
 		if($result){
 			$url = "your_products.php" ;

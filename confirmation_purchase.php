@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<input type="text" name="card_verification" id="card_verification" class="input-text">
 				</div>
 				<div>
-					<a href="catalog.php" class="cancel-button float-right">CANCEL</a>
+					<a <?php echo 'href="catalog.php?id_active='.$_GET["id_active"].'"'; ?> class="cancel-button float-right">CANCEL</a>
 
 					<input type="button" value="CONFIRM" onclick="getConfirmation();" class="button float-right">
 				</div>
