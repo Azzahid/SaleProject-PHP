@@ -30,8 +30,7 @@ function getProduct($search = "default", $option = 0){
 					<div class="product-date">'.$row["username"].'</div>
 					<div class="product-time">added this on '.date("l, j F Y, ",$date).' at '.
 					date("H:i",$date).'</div>
-				</div>
-				<div class= border>';
+				</div> <hr />';
 			echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
 			echo '<div class = "product-center-description">
 						<span class="product-name">'.$row["namaProduk"].'</span><br />
@@ -47,10 +46,11 @@ function getProduct($search = "default", $option = 0){
 					$likes = $row['total'];
 				}
 			}
+			echo "kucing"
 			echo '<div class="product-right-description">
 					<div class = "margin-top">
 						<div class="product-desc">'.$likes.' likes</div>';
-			$query = "SELECT COUNT(*) AS total FROM product, purchase WHERE product_id = ".$row['p_id'];
+			$query = "SELECT COUNT(*) AS total FROM purchase WHERE product_id = '".$row['p_id']."'";
 			$result = $conn->query($query);
 			$purchase = 0;
 			if($result->num_rows >0){
@@ -62,14 +62,14 @@ function getProduct($search = "default", $option = 0){
 			echo		'<div class="product-desc">'.$purchase.' purchase</div>
 					</div>
 					<div class = "margin-top">
-							<span class = "blue" onclick = "like()">Like</span>
-							<span class = "red" onclick = "buy()">Buy</span>
+							<span class = "blue" onclick = "like(this.id)">Like</span>
+							<span class = "red" onclick = "buy(this.id)">Buy</span>
 					</div>
 				</div>
-				</div>
+				<hr class="full" />
 				</div>';
 		}
-	}{
+	}else{
 		echo "Product Not Found";
 	}
 	mysqli_close($conn);
