@@ -42,11 +42,10 @@ function getProduct($search = "default", $option = 0){
 			$likes = 0;
 			if($result->num_rows >0){
 				//output
-				while($row = $result->fetch_assoc()){
-					$likes = $row['total'];
+				while($row1= $result->fetch_assoc()){
+					$likes = $row1['total'];
 				}
 			}
-			echo "kucing"
 			echo '<div class="product-right-description">
 					<div class = "margin-top">
 						<div class="product-desc">'.$likes.' likes</div>';
@@ -55,15 +54,15 @@ function getProduct($search = "default", $option = 0){
 			$purchase = 0;
 			if($result->num_rows >0){
 				//output
-				while($row = $result->fetch_assoc()){
-					$purchase = $row['total'];
+				while($row2 = $result->fetch_assoc()){
+					$purchase = $row2['total'];
 				}
 			}
 			echo		'<div class="product-desc">'.$purchase.' purchase</div>
 					</div>
 					<div class = "margin-top">
-							<span class = "blue" onclick = "like(this.id)">Like</span>
-							<span class = "red" onclick = "buy(this.id)">Buy</span>
+							<span class = "blue" onclick = "like(this.id) id">Like</span>
+							<a href ="confirmation_purchase.php?id_active='.$_GET['id_active'].'&id_product='.$row['p_id'].'"><span class = "red">Buy</span></a>
 					</div>
 				</div>
 				<hr class="full" />
