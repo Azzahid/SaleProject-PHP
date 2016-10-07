@@ -6,11 +6,15 @@ function getProduct(){
 	$conn = connect_db();
 	$query = "SELECT p_id, username, namaProduk, description, price, photo_url, created_at, image_type  FROM product, user WHERE product.user_id=user.id";
 	$result = $conn->query($query);
-	echo "kucing";
+	
 	if($result->num_rows >0){
 		//output
-		echo "kucing";
+		$array = array();
 		while($row = $result->fetch_assoc()){
+			$array[] = $row;
+			echo "kucing";
+		}
+		foreach ($array as $row) {
 			$date = strtotime($row["created_at"]);
 			echo '<div class = "product">
 				<div>
@@ -23,21 +27,45 @@ function getProduct(){
 						<span class="product-name">'.$row["namaProduk"].'</span><br />
 						<span class="product-price">'.$row["price"].'</span><br />
 						<span class="product-desc">'.$row["description"].'</span><br />
-				</div>
-				<div class="product-right-description">
+				</div>';
+			$query = "SELECT COUNT(*) AS total FROM user_like, product WHERE status != 0 AND barang_id = ".$row['p_id'];
+			$result = $conn->query($query);
+			$likes = 0;
+			if($result->num_rows >0){
+				//output
+				while($row = $result->fetch_assoc()){
+					$likes = $row['total'];
+				}
+			}
+			echo '<div class="product-right-description">
 					<div class = "margin-top">
-						<div class="product-desc">NaN</div>
-						<div class="product-desc">NaN</div>
+						<div class="product-desc">'.$likes.' likes</div>';
+			$query = "SELECT COUNT(*) AS total FROM product, purchase WHERE product_id = ".$row['p_id'];
+			$result = $conn->query($query);
+			$purchase = 0;
+			if($result->num_rows >0){
+				//output
+				while($row = $result->fetch_assoc()){
+					$purchase = $row['total'];
+				}
+			}
+			echo		'<div class="product-desc">'.$purchase.' purchase</div>
 					</div>
 					<div class = "margin-top">
-							<div class = "blue">Like</div>
-							<div class = "red">Buy</div>
+							<span class = "blue" onclick = "like()">Like</span><br/>
+							<span class = "red" onclick = "buy()">Buy</span>
 					</div>
 				</div>
 				</div>';
 		}
 	}
 	mysqli_close($conn);
+
+	if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["option"]){
+				$search = $_GET["search"];
+				$option = $_GET["option"];
+				#getProduct($search, $option);
+			}
 }
 
 ?>
@@ -77,13 +105,10 @@ function getProduct(){
 			</div>
 		</form>
 		<!--BagianProduk rencananya pake PHP di echo satu-satu-->
-		<?php 
-			getProduct();
-			if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["option"]){
-				$search = $_GET["search"];
-				$option = $_GET["option"];
-				#getProduct($search, $option);
-			}
-		?>
+		<div id = "search">
+			<?php 
+				getProduct();
+			?>
+		</div>
 	</body>
 </html>
