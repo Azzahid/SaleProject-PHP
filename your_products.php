@@ -1,6 +1,38 @@
 <?php
+	require_once('db.php');
+
 	$your_products = true;
 	$id_active = $_GET['id_active'];
+
+	if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["d"])) {
+		if($_GET['d'] != "") {
+			$conn = connect_db();
+			$p_id = $_GET["d"];
+			$sql = "DELETE FROM product WHERE p_id='$p_id'";
+
+			if (mysqli_query($conn, $sql)) {
+			    // echo "Record deleted successfully";
+			} else {
+			    // echo "Error deleting record: " . mysqli_error($conn);
+			}
+		}
+	}
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$conn = connect_db();
+
+		$id_product = $_POST['id_product'];
+		$id_active = $_POST['id_active'];
+
+		$sql = "INSERT INTO user_like (user_id, barang_id, status)
+		VALUES ('$id_active', '$id_product', 1)";
+
+		if (mysqli_query($conn, $sql)) {
+		    echo "New record created successfully";
+		} else {
+		    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +101,7 @@
 							echo "</div>";
 							echo "<div class='margin-top'>";
 								echo "<span class='edit' onclick='edit_item(this.id);' id='".$row['p_id']."'>EDIT</span>";
-								echo "<span class='delete' onclick='delete_item(this.id)' >DELETE</a>";
+								echo "<span class='delete' onclick='delete_item(this.id)' id='".$row['p_id']."'>DELETE</span>";
 							echo "</div>";
 						echo "</div>			";
 						echo "<hr class='full' />";
