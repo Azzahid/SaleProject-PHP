@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $db_username = "root";
-$db_password = "myPassword";
+$db_password = "bismillah";
 $dbname = "db1";
 
 function connect_db() {

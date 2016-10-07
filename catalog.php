@@ -2,9 +2,18 @@
 require_once('db.php');
 $catalog = true;
 
-function getProduct(){
+function getProduct($search = "default", $option = 0){
 	$conn = connect_db();
-	$query = "SELECT p_id, username, namaProduk, description, price, photo_url, created_at, image_type  FROM product, user WHERE product.user_id=user.id";
+	if($search == 'default'){
+		$query = "SELECT p_id, username, namaProduk, description, price, photo_url, created_at, image_type  FROM product, user WHERE product.user_id=user.id ORDER BY created_at DESC";
+	}else{
+		if($option == 0 )
+		{
+			$query = "SELECT p_id, username, namaProduk, description, price, photo_url, created_at, image_type  FROM product, user WHERE product.user_id=user.id AND product.namaProduk LIKE '%".$search."%' ORDER BY created_at DESC";
+		}else{
+			$query = "SELECT p_id, username, namaProduk, description, price, photo_url, created_at, image_type  FROM product, user WHERE product.user_id=user.id AND user.username LIKE '%".$search."%' ORDER BY created_at DESC";
+		}
+	}
 	$result = $conn->query($query);
 	
 	if($result->num_rows >0){
@@ -12,7 +21,7 @@ function getProduct(){
 		$array = array();
 		while($row = $result->fetch_assoc()){
 			$array[] = $row;
-			echo "kucing";
+			#echo "kucing";
 		}
 		foreach ($array as $row) {
 			$date = strtotime($row["created_at"]);
@@ -22,8 +31,9 @@ function getProduct(){
 					<div class="product-time">added this on '.date("l, j F Y, ",$date).' at '.
 					date("H:i",$date).'</div>
 				</div>
-				<img src="'.$row["prod_img"].'" alt="product.jpg" id="pic">
-				<div class = "product-center-description">
+				<div class= border>';
+			echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
+			echo '<div class = "product-center-description">
 						<span class="product-name">'.$row["namaProduk"].'</span><br />
 						<span class="product-price">'.$row["price"].'</span><br />
 						<span class="product-desc">'.$row["description"].'</span><br />
@@ -52,20 +62,17 @@ function getProduct(){
 			echo		'<div class="product-desc">'.$purchase.' purchase</div>
 					</div>
 					<div class = "margin-top">
-							<span class = "blue" onclick = "like()">Like</span><br/>
+							<span class = "blue" onclick = "like()">Like</span>
 							<span class = "red" onclick = "buy()">Buy</span>
 					</div>
 				</div>
+				</div>
 				</div>';
 		}
+	}{
+		echo "Product Not Found";
 	}
 	mysqli_close($conn);
-
-	if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["option"]){
-				$search = $_GET["search"];
-				$option = $_GET["option"];
-				#getProduct($search, $option);
-			}
 }
 
 ?>
@@ -88,10 +95,11 @@ function getProduct(){
 		</div>
 		<!-- search form -->
 		<form action="catalog.php" method="get">
+			<input type="hidden" name="id_active" <?php echo "value='".$_GET['id_active']."'" ?> />
 			<div class="overflow margin10">
 				<input type ="text" id="searchbar" name="search" 
 				placeholder="Search catalog ...">
-				<button id="gobutton" class="bluebox">GO</button>
+				<button type = "submit" id="gobutton" class="bluebox">GO</button>
 			</div>
 			<div class="overflow">
 				<div class="floatl">by :</div>
@@ -107,7 +115,13 @@ function getProduct(){
 		<!--BagianProduk rencananya pake PHP di echo satu-satu-->
 		<div id = "search">
 			<?php 
-				getProduct();
+				if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && isset($_GET["option"])){
+					$search = $_GET["search"];
+					$option = $_GET["option"];
+					getProduct($search, $option);
+				}else{
+					getProduct();
+				}
 			?>
 		</div>
 	</body>
