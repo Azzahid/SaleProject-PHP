@@ -53,7 +53,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$seller_id = $_POST["seller_id"];
 
 	$conn = connect_db();
-	$sql = "INSERT INTO purchase (buyer_id, product_id, consignee, fulladdress, quantity, creditcardnumber, postalcode, phonenumber, created_at, card_verification, product_name, product_description, product_price, seller_id) VALUES ('$id_active', '$id_product', '$consignee', '$full_address', '$quantity', '$credit_card', '$postal_code', '$phone_number', now(), '$card_verification', '$product_name', '$product_description', '$product_price', '$seller_id')";
+	$sql = "SELECT photo_url FROM product WHERE p_id = '$id_product'";
+  	$result = mysqli_query($conn,$sql);
+  	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	    	$product_photourl = addslashes($row['photo_url']);
+	    }
+	} else {
+	    $product_photourl = null;
+	}
+
+	$sql = "INSERT INTO purchase (buyer_id, product_id, consignee, fulladdress, quantity, creditcardnumber, postalcode, phonenumber, created_at, card_verification, product_name, product_description, product_price, product_photourl, seller_id) VALUES ('$id_active', '$id_product', '$consignee', '$full_address', '$quantity', '$credit_card', '$postal_code', '$phone_number', now(), '$card_verification', '$product_name', '$product_description', '$product_price', '{$product_photourl}', '$seller_id')";
   	$result = mysqli_query($conn,$sql);
   	if ($result) {
 	    // echo "New record created successfully";
