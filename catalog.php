@@ -2,47 +2,42 @@
 require_once('db.php');
 $catalog = true;
 
-function getProduct($search, $option){
+function getProduct(){
 	$conn = connect_db();
-	$query = "SELECT fullname, prod_id, prod_name, prod_price, prod_like, prod_purc,
-	prod_expl, user_id, prod_date, prod_img FROM products, user WHERE products.user_id=user.id";
+	$query = "SELECT p_id, username, namaProduk, description, price, photo_url, created_at, image_type  FROM product, user WHERE product.user_id=user.id";
 	$result = $conn->query($query);
-	
+	echo "kucing";
 	if($result->num_rows >0){
 		//output
+		echo "kucing";
 		while($row = $result->fetch_assoc()){
-			$date = strtotime($row["prod_date"]);
-			echo '<div>
+			$date = strtotime($row["created_at"]);
+			echo '<div class = "product">
 				<div>
-					<div>'.$row["fullname"].'</div>
-					<div>added this on '.date("l, j F Y, ",$date).' at '.
+					<div class="product-date">'.$row["username"].'</div>
+					<div class="product-time">added this on '.date("l, j F Y, ",$date).' at '.
 					date("H:i",$date).'</div>
 				</div>
-				<div>
-					<img src="'.$row["prod_img"].'" alt="product.jpg" id="pic">
-					<div>'.$row["prod_name"].'</div>
-					<div>'.$row["prod_price"].'</div>
-					<div>'.$row["prod_expl"].'</div>
+				<img src="'.$row["prod_img"].'" alt="product.jpg" id="pic">
+				<div class = "product-center-description">
+						<span class="product-name">'.$row["namaProduk"].'</span><br />
+						<span class="product-price">'.$row["price"].'</span><br />
+						<span class="product-desc">'.$row["description"].'</span><br />
 				</div>
-				<div>
-					<div>
-						<div>'.$row["prod_like"].'</div>
-						<div>'.$row["prod_purc"].'</div>
+				<div class="product-right-description">
+					<div class = "margin-top">
+						<div class="product-desc">NaN</div>
+						<div class="product-desc">NaN</div>
 					</div>
-					<div>
-							<button>Like</button>
-							<button>Buy</button>
+					<div class = "margin-top">
+							<div class = "blue">Like</div>
+							<div class = "red">Buy</div>
 					</div>
 				</div>
 				</div>';
 		}
 	}
 	mysqli_close($conn);
-}
-if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["option"]){
-	$search = $_GET["search"];
-	$option = $_GET["option"];
-	getProduct($search, $option);
 }
 
 ?>
@@ -54,6 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["optio
 		<link rel="stylesheet" type ="text/css" href="css/catalog.css">
 		<link rel="stylesheet" type ="text/css" href="css/style.css">
 		<link rel="stylesheet" type ="text/css" href="css/header.css">
+		<link rel="stylesheet" type ="text/css" href="css/products.css">
 		<script src="catalog.js"></script>
 	</head>
 	<body class="body-center helvetica">		
@@ -81,29 +77,13 @@ if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["optio
 			</div>
 		</form>
 		<!--BagianProduk rencananya pake PHP di echo satu-satu-->
-		<div style="padding-top: 20px; padding-bottom:20px;">
-			<div>
-				<div style="font-weight: bold;">"$store_name"</div>
-				<div name="tanggal">added this on"$tanggal"</div>
-			</div>
-			<div style ="padding:10px; border-top: 1px black solid; border-bottom: 1px black solid; overflow:hidden;">
-				<img src="/home/zahid/Downloads/catalog.jpg" alt="product.jpg" style="width:100px; height:100px;float:left">
-				<div style="float:left;">
-					<div>$Nama_Produk</div>
-					<div>$Harga_Produk</div>
-					<div>$details</div>
-				</div>
-				<div style="float:right;">
-					<div>
-						<div>$jumlah likes</div>
-						<div>$jumlah purchases</div>
-					</div>
-					<div>
-						<button style="float:left;">Like</button>
-						<button style="float:right;">Buy</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php 
+			getProduct();
+			if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && $_GET["option"]){
+				$search = $_GET["search"];
+				$option = $_GET["option"];
+				#getProduct($search, $option);
+			}
+		?>
 	</body>
 </html>
