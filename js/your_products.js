@@ -1,6 +1,6 @@
 function edit_item(id_product) {
 	var id_active = document.getElementById("id_active").getAttribute("value");
-	window.location.assign("edit_product.php?id_product="+id_product+'&id_active='+id_active);
+	window.location.assign("edit_product.php?id_product="+id_product+"&id_active="+id_active);
 }
 
 function delete_item(id_product) {

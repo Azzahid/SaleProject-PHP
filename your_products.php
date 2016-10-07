@@ -29,8 +29,9 @@
 				    // output data of each row
 				    while($row = $result->fetch_assoc()) {
 				        echo "<div class='product'>";
-						echo "<span class='product-date'>".$row["created_at"]."</span><br />";
-						echo "<span class='product-time'>at 20.00</span>";
+				        $date = new DateTime($row['created_at']);
+						echo "<span class='product-date'>".date_format($date, "l, d F Y")."</span><br />";
+						echo "<span class='product-time'>at ".date_format($date, "G:i")."</span>";
 						echo "<hr />";
 						echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
 						echo "<div class='product-center-description'>";
