@@ -21,7 +21,7 @@
 			<span class="product-date">Sunday, 14 September 2016</span><br />
 			<span class="product-time">at 20.00</span>
 			<hr />
-			<img src="http://placekitten.com/100/100" alt="product-image">
+			<img src="getImage.php?id_active=<?php echo $id_active; ?>" alt="product-image" width= 180px>
 			<div class="product-center-description">
 				<span class="product-name">Phelps Air Styler</span><br />
 				<span class="product-price">IDR 500.000</span><br />
