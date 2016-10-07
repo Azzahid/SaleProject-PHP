@@ -4,7 +4,7 @@
 	Source: http://www.w3schools.com/
 */
 require_once('db.php');
-
+$emailError = $unameError = "";
 function register($full_name, $username, $email, $pass,$full_address, $postal_code, $phone_number) {
 	$conn = connect_db();
 	global $emailError, $unameError;
@@ -12,7 +12,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 	// check if username and email already exist
 	if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
 		$error = true;
-		$emailError = "Please enter valid email address.";
+		$emailError = "* Please enter valid email address.";
 	} else {
 		$query_email = "SELECT email FROM user WHERE email='$email'";
 		$result_email = mysqli_query($conn,$query_email);
@@ -24,7 +24,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 	}
 	
 	if(empty($username)){
-		$unameError = "Please enter the username.";
+		$unameError = "* Please enter the username.";
 		$error = true;
 	} else {
 		$query_uname = "SELECT username FROM user WHERE username='$username'";
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<div class = "border-bottom ">
 			<h2>Please register</h2>
 		</div>
-		<form method="POST" action="register.php">
+		<form method="POST" action="register.php" name="register" onsubmit="return validateform()">
 			<div>
 				<label for="full_name">Full Name</label><br />
 				<input type="text" name="full_name" class="input-text">
@@ -84,10 +84,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div>
 				<label for="username">Username</label><br />
 				<input type="text" name="username" class="input-text">
+				<span style="color: red;"> <?php echo $unameError;?></span>
 			</div>
 			<div>
 				<label for="email">Email</label><br />
 				<input type="text" name="email" class="input-text">
+				<span style="color: red;"> <?php echo $emailError;?></span>
 			</div>
 			<div>
 				<label for="pass">Password</label><br />
@@ -118,6 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<div>
 			<p class="font-small"><strong>Already registered? Login <a href="login.php" class="link">here</a></strong></p>
 		</div>
+		<script src="js/register.js"></script>
 		<?php include 'footer.php'; ?>
 	</body>
 </html>
