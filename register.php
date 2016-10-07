@@ -43,6 +43,13 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 
 		if ($result) {
 			echo "New user created successfully<br><br>";
+			$id_active = "SELECT id FROM user WHERE username = '$username' OR email = '$username' AND password = '$password' LIMIT 1";
+			$tempid = mysqli_query($conn,$id_active);
+			$urlresult = mysqli_fetch_array($tempid);
+			$url = "catalog.php" ;
+			$url_query = parse_url($url, PHP_URL_QUERY);
+			$url .= '?id_active=' .$urlresult['id'];
+			header('Location:' .$url);
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error();
 		}
@@ -100,9 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<input type="password" name="confirm_pass" class="input-text">
 			</div>
 			<div>
-				<label for="full_address">Full Address</label><br />
-				<textarea name="full_adress" rows="5" cols="50" class="input-textarea">
-				</textarea>
+				<label for="full_adress">Full Address</label><br />
+				<textarea name="full_adress" rows="5" cols="50" class="input-textarea"></textarea>
 			</div>
 			<div>
 				<label for="postal_code">Postal Code</label><br />
