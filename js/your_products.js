@@ -6,15 +6,9 @@ function edit_item(id_product) {
 function delete_item(id_product) {
 	var retVal = confirm("Are you sure you want to delete this item?");
    	if( retVal == true ){		
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-			  	location.reload();
-			}
-		};
-		xhttp.open("POST", "your_products.php", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send("type=delete&id_product="+id_product);
+   		var i
+   		d_active = document.getElementById("id_active").getAttribute("value");
+   		window.location.assign("your_products.php?id_active="+id_active+"&d="+id_product);
    	}
    	else{
       	// document.write ("User does not want to continue!");

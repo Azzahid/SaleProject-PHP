@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	    	$product_name = $row['namaProduk'];
 	    	$product_price = $row['price'];
 	    	$product_description = $row['description'];
-	    	$product_photourl = $row['photo_url'];
 	    	$seller_id = $row['user_id'];
 	    }
 	} else {
@@ -51,11 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$product_name = $_POST["product_name"];
 	$product_description = $_POST["product_description"];
 	$product_price = $_POST["product_price"];
-	$product_photourl = $_POST["product_photourl"];
 	$seller_id = $_POST["seller_id"];
 
 	$conn = connect_db();
-	$sql = "INSERT INTO purchase (buyer_id, product_id, consignee, fulladdress, quantity, creditcardnumber, postalcode, phonenumber, created_at, card_verification, product_name, product_description, product_price, product_photourl, seller_id) VALUES ('$id_active', '$id_product', '$consignee', '$full_address', '$quantity', '$credit_card', '$postal_code', '$phone_number', now(), '$card_verification', '$product_name', '$product_description', '$product_price', '$product_photourl', '$seller_id')";
+	$sql = "INSERT INTO purchase (buyer_id, product_id, consignee, fulladdress, quantity, creditcardnumber, postalcode, phonenumber, created_at, card_verification, product_name, product_description, product_price, seller_id) VALUES ('$id_active', '$id_product', '$consignee', '$full_address', '$quantity', '$credit_card', '$postal_code', '$phone_number', now(), '$card_verification', '$product_name', '$product_description', '$product_price', '$seller_id')";
   	$result = mysqli_query($conn,$sql);
   	if ($result) {
 	    // echo "New record created successfully";
@@ -87,7 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<input type="hidden" name="product_name" value="<?php echo $product_name; ?>">
 				<input type="hidden" name="product_description" value="<?php echo $product_description; ?>">
 				<input type="hidden" name="product_price" value="<?php echo $product_price; ?>">
-				<input type="hidden" name="product_photourl" value="<?php echo $product_photourl; ?>">
 				<input type="hidden" name="seller_id" value="<?php echo $seller_id; ?>">
 				<p>Product : <?php echo $product_name; ?></p>
 				<p>Price : IDR <?php echo number_format($product_price); ?></p>
