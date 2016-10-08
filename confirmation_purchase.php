@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				<h2>Please confirm your purchase</h2>
 			</div>
 
-			<form method="post" <?php echo "action='catalog.php?id_active=".$_GET['id_active']."'" ?> id="purchase_form">
+			<form method="post" <?php echo "action='purchases.php?id_active=".$_GET['id_active']."'" ?> id="purchase_form">
 				<span id="product_price" value="<?php echo $product_price; ?>"></span>
 				<input type="hidden" name="id_product" value="<?php echo $id_product; ?>">
 				<input type="hidden" name="id_active" value="<?php echo $id_active; ?>">
