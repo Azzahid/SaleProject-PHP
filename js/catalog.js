@@ -4,6 +4,11 @@ function like(id, userid){
 		if (this.readyState == 4 && this.status == 200){
 			var obj = eval(this.responseText);
 			document.getElementById(String(id)).innerHTML = obj[0];
+			if(String(obj[0])=="LIKED"){
+				document.getElementById(String(id)).className = "red like font-bold";
+			}else{
+				document.getElementById(String(id)).className = "color-blue like font-bold";
+			}
 			document.getElementById(String(id)+"-num").innerHTML = obj[1];
 		}else{
 		}

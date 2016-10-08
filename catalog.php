@@ -65,7 +65,13 @@ function getProduct($search = "default", $option = 0){
 			echo		'<div class="product-desc">'.$purchase.' purchases</div>
 					</div>
 					<div class = "margin-top">
-							<button class = "color-blue like font-bold" id ="'.$row['p_id'].'" onclick = "like(this.id,'.$_GET['id_active'].')">';
+							<button class = "';
+			if($status == 0){
+				echo "color-blue";
+			}else{
+				echo "red";
+			}  
+						echo ' like font-bold" id ="'.$row['p_id'].'" onclick = "like(this.id,'.$_GET['id_active'].')">';
 			if($status == 1){
 				echo "LIKED";
 			}else{
