@@ -34,7 +34,7 @@ function getProduct($search = "default", $option = 0){
 			echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
 			echo '<div class = "product-center-description">
 						<span class="product-name">'.$row["namaProduk"].'</span><br />
-						<span class="product-price">IDR '.number_format($row["price"]).'</span><br />
+						<span class="product-price">IDR '.str_replace(',', '.', number_format($row["price"])).'</span><br />
 						<span class="product-desc">'.$row["description"].'</span><br />
 				</div>';
 			$query = "SELECT * FROM user_like WHERE status != 0 AND barang_id = ".$row['p_id']."";
@@ -65,14 +65,14 @@ function getProduct($search = "default", $option = 0){
 			echo		'<div class="product-desc">'.$purchase.' purchases</div>
 					</div>
 					<div class = "margin-top">
-							<button class = "blue" id ="'.$row['p_id'].'" onclick = "like(this.id,'.$_GET['id_active'].')">';
+							<button class = "color-blue like font-bold" id ="'.$row['p_id'].'" onclick = "like(this.id,'.$_GET['id_active'].')">';
 			if($status == 1){
-				echo "Liked";
+				echo "LIKED";
 			}else{
-				echo "Like";
+				echo "LIKE";
 			} 
 			echo'			</button>
-							<a href ="confirmation_purchase.php?id_active='.$_GET['id_active'].'&id_product='.$row['p_id'].'"><span class = "red">Buy</span></a>
+							<a class="link color-green font-bold" href ="confirmation_purchase.php?id_active='.$_GET['id_active'].'&id_product='.$row['p_id'].'"><span >BUY</span></a>
 					</div>
 				</div>
 				<hr class="full" />
@@ -83,6 +83,45 @@ function getProduct($search = "default", $option = 0){
 	}
 	mysqli_close($conn);
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$id_active = $_POST["id_active"];
+	$id_product = $_POST["id_product"];
+	$quantity = $_POST["quantity"];
+	$consignee = $_POST["consignee"];
+	$full_address = $_POST["full_address"];
+	$postal_code = $_POST["postal_code"];
+	$phone_number = $_POST["phone_number"];
+	$credit_card = $_POST["credit_card"];
+	$card_verification = $_POST["card_verification"];
+	$product_name = $_POST["product_name"];
+	$product_description = $_POST["product_description"];
+	$product_price = $_POST["product_price"];
+	$seller_id = $_POST["seller_id"];
+
+	$conn = connect_db();
+	$sql = "SELECT photo_url, image_type FROM product WHERE p_id = '$id_product'";
+  	$result = mysqli_query($conn,$sql);
+  	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	    	$product_photourl = addslashes($row['photo_url']);
+	    	$image_type = $row['image_type'];
+	    }
+	} else {
+	    $product_photourl = null;
+	    $image_type = NULL;
+	}
+
+	$sql = "INSERT INTO purchase (buyer_id, product_id, consignee, fulladdress, quantity, creditcardnumber, postalcode, phonenumber, created_at, card_verification, product_name, product_description, product_price, product_photourl, seller_id, image_type) VALUES ('$id_active', '$id_product', '$consignee', '$full_address', '$quantity', '$credit_card', '$postal_code', '$phone_number', now(), '$card_verification', '$product_name', '$product_description', '$product_price', '{$product_photourl}', '$seller_id', '$image_type')";
+  	$result = mysqli_query($conn,$sql);
+  	if ($result) {
+	    // echo "New record created successfully";
+	} else {
+	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	}
+}
+
 
 ?>
 

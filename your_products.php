@@ -54,7 +54,7 @@
 				$id_active = $_GET['id_active'];
 				$conn = connect_db();
 
-				$sql = "SELECT * FROM product WHERE user_id='$id_active'";
+				$sql = "SELECT * FROM product WHERE user_id='$id_active' ORDER BY created_at DESC";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -63,12 +63,12 @@
 				        echo "<div class='product'>";
 				        $date = new DateTime($row['created_at']);
 						echo "<span class='product-date'>".date_format($date, "l, d F Y")."</span><br />";
-						echo "<span class='product-time'>at ".date_format($date, "G:i")."</span>";
+						echo "<span class='product-time'>at ".date_format($date, "G.i")."</span>";
 						echo "<hr />";
 						echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
 						echo "<div class='product-center-description'>";
 							echo "<span class='product-name'>".$row["namaProduk"]."</span><br />";
-							echo "<span class='product-price'>IDR ".number_format($row["price"])."</span><br />";
+							echo "<span class='product-price'>IDR ".str_replace(',', '.', number_format($row["price"]))."</span><br />";
 							echo "<span class='product-desc'>".$row["description"]."</span><br />";
 						echo "</div>";
 

@@ -17,16 +17,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			}
 			if($status == 0){
 				$query = "UPDATE user_like SET status = 1 WHERE user_id = '".$user."'AND barang_id='".$id."'";
-				array_push($hasil, "Liked");
+				array_push($hasil, "LIKED");
 			}else{
 				$query = "UPDATE user_like SET status = 0 WHERE user_id = '".$user."'AND barang_id='".$id."'";
-				array_push($hasil, "Like");
+				array_push($hasil, "LIKE");
 			}
 			$result = $conn->query($query);
 		}else{
 			$query = "INSERT INTO user_like (user_id, barang_id, status) VALUES ('".$user."','".$id."',1)";
 			$result = $conn->query($query);
-			array_push($hasil,"Liked");
+			array_push($hasil,"LIKED");
 		}
 		$query = "SELECT * FROM user_like WHERE status != 0 AND barang_id = '".$id."'";
 		$result = $conn->query($query);

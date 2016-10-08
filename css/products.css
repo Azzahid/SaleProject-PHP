@@ -27,11 +27,11 @@
 
 .product-center-description {
 	float: left;
-	width: 400px;
+	width: 300px;
 }
 
 .product-name {
-	font-size: 12pt;
+	font-size: 13pt;
 	font-weight: bold;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .product-desc {
-	font-size: 9pt;
+	font-size: 10pt;
 }
 
 .product-bottom-desc {
@@ -48,11 +48,11 @@
 	position: absolute; 
 	bottom: 0;
 	padding-bottom: 10px;
-	font-weight: bold;
 }
 
 .product-right-description {
 	float:right;
+	width: 250px;
 }
 
 .full {
@@ -73,8 +73,20 @@
 
 .edit {
 	color: #eea12d;		/*orange*/
+	margin-right: 30px;
 }
 
 .delete {
 	color: #870005;		/*red*/
+}
+
+.like {
+	font-size: 12pt;
+	text-decoration: none;		
+	background:none!important;
+	border:none; 
+	padding:0!important;
+	/*border is optional*/
+	cursor: pointer;
+	margin-right: 30px;
 }

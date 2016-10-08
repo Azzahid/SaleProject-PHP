@@ -12,14 +12,14 @@ function getPurchase(){
 				$date = new DateTime($row['created_at']);
 				echo '<div class = "product">';
 					echo '<span class="product-date">'.date_format($date,'l, d F Y').'</span><br />';
-					echo '<span class = "product-time">at '.date_format($date, "G:i")."</span>";
+					echo '<span class = "product-time">at '.date_format($date, "G.i")."</span>";
 					echo '<hr />';
 					echo '<img src="getImagePurchase.php?id_active='.$row["purchase_id"].'"alt="product-image" width="100px" height="100px">';
 					echo "<div class='product-center-description'>";
 							echo "<span class='product-name'>".$row["product_name"]."</span><br />";
-							echo "<span class= 'product-price'>IDR".number_format($row["product_price"]*$row["quantity"])."</span><br />";
-							echo "<span class='product-price'>".number_format($row["quantity"])."</span><br />";
-							echo "<span class='product-price'>@IDR ".number_format($row["product_price"])."</span><br />";
+							echo "<span class= 'product-price'>IDR".str_replace(',', '.', number_format($row["product_price"]*$row["quantity"]))."</span><br />";
+							echo "<span class='product-price'>".number_format($row["quantity"])." pcs</span><br />";
+							echo "<span class='product-price'>@IDR ".str_replace(',', '.', number_format($row["product_price"]))."</span><br />";
 
 					echo "</div>";
 					echo "<div class='product-right-description'>";
@@ -32,7 +32,7 @@ function getPurchase(){
 						echo "</div>"; 
 					echo "</div>";
 					echo "<div class='product-center-description margin-top'>";
-						echo "<span class='product-desc '>bought from ";
+						echo "<span class='product-bottom-desc '>bought from ";
 							$q = "SELECT * FROM user WHERE user.id = '".$row['seller_id']."'";
 							$result2 = $conn->query($q);
 							$buyer_username = "none";
