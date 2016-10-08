@@ -63,7 +63,18 @@ function validateform() {
 		alert("Phone number must be a number");
 		return false;
 	}
-	document.getElementById("register").submit();
+	
+	var retVal = confirm("Are you sure with your input?");
+   if( retVal == true ){
+      document.getElementById("register").submit();
+      // window.location.assign("http://localhost/purchases.php");
+      // return true;
+   }
+   else{
+      // document.write ("User does not want to continue!");
+      // return false;
+   }
+	
 }
 
 function isvalidemail(email) {

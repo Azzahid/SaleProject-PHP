@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<input type="text" name="phone_number" class="input-text">
 			</div>
 			<div>
-				<input type="submit" value="REGISTER" name="registerr" onclick="validateform();" class="button float-right">
+				<input type="button" value="REGISTER" name="registerr" onclick="validateform();" class="button float-right">
 			</div>
 		</form>
 		<br>
