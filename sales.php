@@ -17,7 +17,7 @@ function getSales(){
 					echo '<img src="getImagePurchase.php?id_active='.$row["purchase_id"].'"alt="product-image" width="100px" height="100px">';
 					echo "<div class='product-center-description'>";
 							echo "<span class='product-name'>".$row["product_name"]."</span><br />";
-							echo "<span class= 'product-price'>IDR".str_replace(',', '.', number_format($row["product_price"]*$row["quantity"]))."</span><br />";
+							echo "<span class= 'product-price'>IDR ".str_replace(',', '.', number_format($row["product_price"]*$row["quantity"]))."</span><br />";
 							echo "<span class='product-price'>".number_format($row["quantity"])." pcs</span><br />";
 							echo "<span class='product-price'>@IDR ".str_replace(',', '.', number_format($row["product_price"]))."</span><br />";
 

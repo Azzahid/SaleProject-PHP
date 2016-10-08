@@ -74,7 +74,7 @@
 
 						echo "<div class='product-right-description'>";
 							echo "<div class='margin-top'>	";
-									$sql = "SELECT COUNT(*) AS likes FROM user_like WHERE barang_id='".$row['p_id']."'";
+									$sql = "SELECT COUNT(*) AS likes FROM user_like WHERE status != 0 AND barang_id = ".$row['p_id']."";
 									$result2 = $conn->query($sql);
 									if ($result2->num_rows > 0) {
 				    					// output data of each row

@@ -29,7 +29,7 @@ function getProduct($search = "default", $option = 0){
 				<div>
 					<div class="product-date">'.$row["username"].'</div>
 					<div class="product-time">added this on '.date("l, j F Y, ",$date).' at '.
-					date("H:i",$date).'</div>
+					date("H.i",$date).'</div>
 				</div> <hr />';
 			echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
 			echo '<div class = "product-center-description">

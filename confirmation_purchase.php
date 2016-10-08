@@ -63,12 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 				<input type="hidden" name="product_price" value="<?php echo $product_price; ?>">
 				<input type="hidden" name="seller_id" value="<?php echo $seller_id; ?>">
 				<p>Product : <?php echo $product_name; ?></p>
-				<p>Price : IDR <?php echo number_format($product_price); ?></p>
+				<p>Price : IDR <?php echo str_replace(',', '.', number_format($product_price)); ?></p>
 				<p>Quantity :
 					<input type="text" name="quantity" value="1" onkeyup="updateTotalPrice()" id="quantity">
 					pcs
 				</p>
-				<p>Total Price : IDR <span id="total_price"><?php echo number_format($product_price); ?></span></p>
+				<p>Total Price : IDR <span id="total_price"><?php echo str_replace(',', '.', number_format($product_price)); ?></span></p>
 				<p>Delivery to :</p>
 				<div>
 					<label for="consignee">Consignee</label><br />

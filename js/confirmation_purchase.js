@@ -93,7 +93,7 @@ function getConfirmation(){
 function updateTotalPrice() {
    var quantity = document.getElementById("quantity").value;
    var price = document.getElementById("product_price").getAttribute("value");
-   document.getElementById("total_price").innerHTML = numberWithCommas(quantity * price);
+   document.getElementById("total_price").innerHTML = numberWithCommas(quantity * price).replace(/,/g,".");
 }
 
 function numberWithCommas(x) {
