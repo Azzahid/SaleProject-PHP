@@ -34,7 +34,7 @@ function getProduct($search = "default", $option = 0){
 			echo "<img src='getImage.php?id_active=".$row["p_id"]."' alt='product-image' width='100px' height='100px'>";
 			echo '<div class = "product-center-description">
 						<span class="product-name">'.$row["namaProduk"].'</span><br />
-						<span class="product-price">'.$row["price"].'</span><br />
+						<span class="product-price">IDR '.number_format($row["price"]).'</span><br />
 						<span class="product-desc">'.$row["description"].'</span><br />
 				</div>';
 			$query = "SELECT * FROM user_like WHERE status != 0 AND barang_id = ".$row['p_id']."";
@@ -46,8 +46,8 @@ function getProduct($search = "default", $option = 0){
 			}
 			echo '<div class="product-right-description">
 					<div class = "margin-top">
-						<div class="product-desc" id = "'.$row['p_id'].'-num">'.$likes.'
-						</div><span>Likes</span>';
+						<span class="product-desc" id = "'.$row['p_id'].'-num">'.$likes.'
+						</span><span class="product-desc"> Likes</span>';
 			$query = "SELECT * FROM purchase WHERE product_id = '".$row['p_id']."'";
 			$result = $conn->query($query);
 			$purchase = 0;
@@ -62,7 +62,7 @@ function getProduct($search = "default", $option = 0){
 				//output
 				$status = 1;
 			}
-			echo		'<div class="product-desc">'.$purchase.' purchase</div>
+			echo		'<div class="product-desc">'.$purchase.' purchases</div>
 					</div>
 					<div class = "margin-top">
 							<button class = "blue" id ="'.$row['p_id'].'" onclick = "like(this.id,'.$_GET['id_active'].')">';
