@@ -37,31 +37,41 @@ function getProduct($search = "default", $option = 0){
 						<span class="product-price">'.$row["price"].'</span><br />
 						<span class="product-desc">'.$row["description"].'</span><br />
 				</div>';
-			$query = "SELECT COUNT(*) AS total FROM user_like, product WHERE status != 0 AND barang_id = ".$row['p_id'];
+			$query = "SELECT * FROM user_like WHERE status != 0 AND barang_id = ".$row['p_id']."";
 			$result = $conn->query($query);
 			$likes = 0;
 			if($result->num_rows >0){
 				//output
-				while($row1= $result->fetch_assoc()){
-					$likes = $row1['total'];
-				}
+				$likes = $result->num_rows;
 			}
 			echo '<div class="product-right-description">
 					<div class = "margin-top">
-						<div class="product-desc">'.$likes.' likes</div>';
-			$query = "SELECT COUNT(*) AS total FROM purchase WHERE product_id = '".$row['p_id']."'";
+						<div class="product-desc" id = "'.$row['p_id'].'-num">'.$likes.'
+						</div><span>Likes</span>';
+			$query = "SELECT * FROM purchase WHERE product_id = '".$row['p_id']."'";
 			$result = $conn->query($query);
 			$purchase = 0;
 			if($result->num_rows >0){
 				//output
-				while($row2 = $result->fetch_assoc()){
-					$purchase = $row2['total'];
-				}
+				$purchase = $result->num_rows;
+			}
+			$query = "SELECT * FROM user_like WHERE status != 0 AND user_id = '".$_GET['id_active']."' AND barang_id = '".$row['p_id']."'";
+			$result = $conn->query($query);
+			$status = 0;
+			if($result->num_rows >0){
+				//output
+				$status = 1;
 			}
 			echo		'<div class="product-desc">'.$purchase.' purchase</div>
 					</div>
 					<div class = "margin-top">
-							<span class = "blue" onclick = "like(this.id) id">Like</span>
+							<button class = "blue" id ="'.$row['p_id'].'" onclick = "like(this.id,'.$_GET['id_active'].')">';
+			if($status == 1){
+				echo "Liked";
+			}else{
+				echo "Like";
+			} 
+			echo'			</button>
 							<a href ="confirmation_purchase.php?id_active='.$_GET['id_active'].'&id_product='.$row['p_id'].'"><span class = "red">Buy</span></a>
 					</div>
 				</div>
@@ -84,7 +94,6 @@ function getProduct($search = "default", $option = 0){
 		<link rel="stylesheet" type ="text/css" href="css/style.css">
 		<link rel="stylesheet" type ="text/css" href="css/header.css">
 		<link rel="stylesheet" type ="text/css" href="css/products.css">
-		<script src="catalog.js"></script>
 	</head>
 	<body class="body-center helvetica">		
 		<?php include 'header.php'; ?>
@@ -123,5 +132,6 @@ function getProduct($search = "default", $option = 0){
 				}
 			?>
 		</div>
+		<script type="text/javascript" src="js/catalog.js"></script>
 	</body>
 </html>
