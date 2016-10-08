@@ -4,7 +4,7 @@ $sales = true;
 
 function getSales(){
 	$conn = connect_db();
-	$query = "SELECT * FROM purchase WHERE purchase.seller_id = '".$_GET['id_active']."'";
+	$query = "SELECT * FROM purchase WHERE purchase.seller_id = '".$_GET['id_active']."' ORDER BY created_at DESC";
 	$result = $conn->query($query);
 	if($result){
 		if($result->num_rows > 0){
