@@ -47,8 +47,13 @@ Berikut tampilan dari *SaleProject* kami:
 ![](ss/register.PNG)
 
 #### Catalog
+Tampilan catalog:
 ![](ss/catalog.PNG)
+
+Anda dapat memberikan *like* untuk barang yang Anda sukai:
 ![](ss/catalog_liked.PNG)
+
+Anda juga dapat mencari barang apapun:
 ![](ss/catalog_search.PNG)
 
 #### Confirmation Purchase
