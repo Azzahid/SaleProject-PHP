@@ -5,11 +5,13 @@
 */
 require_once('db.php');
 $emailError = $unameError = "";
+
 function register($full_name, $username, $email, $pass,$full_address, $postal_code, $phone_number) {
 	$conn = connect_db();
 	global $emailError, $unameError;
-	global $error;
+	$error = false;
 	// check if username and email already exist
+	
 	if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
 		$error = true;
 		$emailError = "* Please enter valid email address.";
@@ -23,6 +25,7 @@ function register($full_name, $username, $email, $pass,$full_address, $postal_co
 		}
 	}
 	
+
 	if(empty($username)){
 		$unameError = "* Please enter the username.";
 		$error = true;
@@ -83,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<div class = "border-bottom ">
 			<h2>Please register</h2>
 		</div>
-		<form method="POST" action="register.php" name="register" onsubmit="return validateform()">
+		<form method="POST" action="register.php" id="register" name="register">
 			<div>
 				<label for="full_name">Full Name</label><br />
 				<input type="text" name="full_name" class="input-text">
@@ -96,7 +99,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div>
 				<label for="email">Email</label><br />
 				<input type="text" name="email" class="input-text">
-				<span style="color: red;"> <?php echo $emailError;?></span>
 			</div>
 			<div>
 				<label for="pass">Password</label><br />
@@ -119,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<input type="text" name="phone_number" class="input-text">
 			</div>
 			<div>
-				<input type="submit" value="REGISTER" name="registerr" class="button float-right">
+				<input type="submit" value="REGISTER" name="registerr" onclick="validateform();" class="button float-right">
 			</div>
 		</form>
 		<br>
